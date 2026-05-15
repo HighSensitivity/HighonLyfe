@@ -1,0 +1,66 @@
+/* CONFIRM */
+.confirm-layout { max-width: 960px; margin: 2.5rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1.1fr; gap: 2rem; align-items: start; }
+.order-summary-panel { background: var(--white); border-radius: var(--radius); padding: 1.8rem; box-shadow: var(--shadow); border: 1px solid rgba(0, 216, 255, 0.1); position: sticky; top: 90px; }
+.order-summary-panel h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 1.2rem; color: var(--deep); }
+.order-item-line { display: flex; justify-content: space-between; padding: 0.6rem 0; font-size: 0.92rem; border-bottom: 1px solid rgba(0, 216, 255, 0.1); color: var(--mocha); }
+.order-grand-total { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.15rem; padding-top: 1rem; margin-top: 0.5rem; border-top: 2px solid rgba(255, 102, 204, 0.35); color: var(--pink); }
+.checkout-form-panel { background: var(--white); border-radius: var(--radius); padding: 1.8rem; box-shadow: var(--shadow); border: 1px solid rgba(0, 216, 255, 0.1); }
+.checkout-form-panel h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--deep); margin-bottom: 1.5rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--mocha); margin-bottom: 0.4rem; letter-spacing: 0.03em; }
+.form-group input { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--line); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--deep); transition: border-color 0.2s, box-shadow 0.2s; background: rgba(10, 8, 18, 0.5); }
+.form-group input:focus { outline: none; border-color: var(--pink); background: rgba(23, 20, 34, 0.95); box-shadow: 0 0 0 3px rgba(255,102,204,0.12); }
+.form-group select { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--line); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--deep); transition: border-color 0.2s, box-shadow 0.2s; background: rgba(10, 8, 18, 0.5); }
+.form-group select:focus { outline: none; border-color: var(--pink); background: rgba(23, 20, 34, 0.95); box-shadow: 0 0 0 3px rgba(255,102,204,0.12); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.checkout-btn,
+.confirm-btn {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  margin-top: 1.2rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--on-accent);
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  box-shadow: 0 4px 20px rgba(255, 102, 204, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: filter 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.checkout-btn:hover,
+.confirm-btn:hover { filter: brightness(1.12); box-shadow: 0 6px 28px rgba(153, 51, 255, 0.35); }
+.checkout-btn:active,
+.confirm-btn:active { transform: scale(0.98); }
+.checkout-btn:focus-visible,
+.confirm-btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+
+.continue-link {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--mocha);
+  text-decoration: none;
+  font-size: 0.9rem;
+  opacity: 0.85;
+  transition: opacity 0.2s, color 0.2s;
+}
+.continue-link:hover { opacity: 1; color: var(--cyan); }
+
+.loading-overlay { display: none; text-align: center; padding: 2rem; color: var(--mocha); }
+.loading-overlay i { font-size: 2rem; color: var(--pink); }
+.loading-overlay p { margin-top: 0.8rem; font-size: 0.95rem; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.fa-spin { animation: spin 1s linear infinite; }
+.success-panel { display: none; text-align: center; padding: 2.5rem 2rem; background: linear-gradient(145deg, rgba(0,216,255,0.12) 0%, rgba(153,51,255,0.18) 50%, rgba(255,102,204,0.1) 100%); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid rgba(0, 216, 255, 0.2); }
+.success-panel i { font-size: 3rem; color: var(--cyan); display: block; margin-bottom: 1rem; filter: drop-shadow(0 0 12px rgba(0,216,255,0.5)); }
+.success-panel h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--deep); margin-bottom: 0.5rem; }
+.success-panel p { color: var(--mocha); font-size: 0.95rem; line-height: 1.6; }
