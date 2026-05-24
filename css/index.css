@@ -39,6 +39,12 @@
 .add-to-cart-btn { width: 100%; padding: 0.65rem; background: linear-gradient(135deg, var(--purple) 0%, #6a2fa8 45%, var(--pink) 100%); color: var(--ink); border: none; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: filter 0.2s, transform 0.15s; margin-top: 0.4rem; }
 .add-to-cart-btn:hover { filter: brightness(1.1); }
 .add-to-cart-btn:active { transform: scale(0.98); }
+.add-to-cart-btn:disabled { opacity: 0.65; cursor: not-allowed; filter: none; }
+.add-to-cart-btn:disabled:hover { filter: none; }
+.product-price-soon { font-style: italic; opacity: 0.85; }
+.product-card-unavailable { opacity: 0.88; }
+.product-card-unavailable .product-img-wrap img { filter: grayscale(0.35); }
+.product-badge-oos { background: var(--mocha); color: var(--white); }
 .empty-state { text-align: center; padding: 4rem 2rem; color: var(--mocha); }
 .empty-state i { font-size: 3rem; opacity: 0.35; margin-bottom: 1rem; display: block; color: var(--purple); }
 .empty-state p { font-size: 1.1rem; opacity: 0.75; }
