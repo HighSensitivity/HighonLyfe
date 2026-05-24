@@ -71,16 +71,20 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="js/modal.js"></script>
   <script>const products = [
-  { id:1, title:'Classic Chocolate Birthday Cake', category:'birthday', price:45, description:'Rich layers of dark chocolate sponge with silky ganache frosting and festive decorations.', image:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600', badge:'Bestseller' },
-  { id:2, title:'Strawberry Shortcake', category:'birthday', price:38, description:'Light vanilla layers piled high with fresh strawberries and whipped cream.', image:'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600', badge:null },
-  { id:3, title:'Rainbow Funfetti Cake', category:'birthday', price:42, description:'A celebration in every slice — colourful sprinkles baked right into fluffy vanilla batter.', image:'https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?auto=format&fit=crop&w=600', badge:null },
-  { id:4, title:'Elegant White Wedding Cake', category:'wedding', price:195, description:'Three-tier ivory fondant masterpiece adorned with delicate sugar flowers.', image:'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=600', badge:'Premium' },
-  { id:5, title:'Rustic Naked Wedding Cake', category:'wedding', price:165, description:'Exposed sponge tiers decorated with fresh florals and eucalyptus for a boho vibe.', image:'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=600', badge:null },
-  { id:6, title:'Gold Drip Wedding Cake', category:'wedding', price:220, description:'Luxurious dark chocolate tiers with edible gold drip and handcrafted sugar roses.', image:'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=600', badge:'Luxury' },
-  { id:7, title:'Custom Photo Cake', category:'custom', price:65, description:'Your favourite photo printed on a smooth fondant panel — fully personalised.', image:'https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=600', badge:null },
-  { id:8, title:'Name & Number Cake', category:'custom', price:55, description:'Bold numerals and hand-piped names make every milestone unforgettable.', image:'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?auto=format&fit=crop&w=600', badge:null },
-  { id:9, title:'Character Sculpted Cake', category:'custom', price:95, description:'Bring your favourite character to life with our hand-sculpted fondant art.', image:'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=600', badge:'Popular' }
+  { id:1, title:'Classic Chocolate Layer Cake', category:'cake', price:45, inStock:true, description:'Rich dark chocolate sponge with silky ganache frosting.', image:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600', badge:'Bestseller' },
+  { id:2, title:'Red Velvet Delight', category:'cake', price:45, inStock:true, description:'Classic red velvet layers with creamy frosting and a rich, velvety taste in every bite.', image:'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600', badge:null },
+  { id:3, title:'Rainbow Funfetti Cake', category:'cake', price:45, inStock:true, description:'Colourful sprinkles baked into fluffy vanilla batter.', image:'https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?auto=format&fit=crop&w=600', badge:null },
+  { id:4, title:'Chocolate Brownie', category:'brownies', price:40, inStock:true, description:'Decadent chocolate brownie packed with deep cocoa flavor and a fudgy center.', image:'img/cbrowine.jpg', badge:'Premium' },
+  { id:5, title:'Salted Caramel Brownies', category:'brownies', price:40, inStock:true, description:'Gooey chocolate Fudgy chocolate brownie layered with silky caramel for the perfect sweet finish.', image:'img/cbrowine.jpg', badge:null },
+  { id:6, title:'Triple Chocolate Brownies', category:'brownies', price:40, inStock:true, description:'Dark, milk, and white chocolate in every bite.', image:'img/cbrowine.jpg', badge:'Luxury' },
+  { id:7, title:'Cupcakes', category:'coming-soon', price:0, description:'Assorted flavours — launching soon.', image:'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?auto=format&fit=crop&w=600', badge:'Coming Soon' },
+  { id:8, title:'Cheesecakes', category:'coming-soon', price:0, description:'New York style and fruit-topped varieties — stay tuned.', image:'https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=600', badge:'Coming Soon' },
+  { id:9, title:'Cookie Boxes', category:'coming-soon', price:0, description:'Curated gift boxes — available soon.', image:'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=600', badge:'Coming Soon' }
 ];
+
+function isOutOfStock(p) {
+  return p.inStock === false;
+}
 
 function getCart() { return JSON.parse(localStorage.getItem('sweetdelights_cart')) || []; }
 function saveCart(cart) { localStorage.setItem('sweetdelights_cart', JSON.stringify(cart)); }
@@ -98,7 +102,7 @@ function showToast(msg, icon='fa-check-circle') {
 
 function addToCart(productId, quantity) {
   const p = products.find(x => x.id === productId);
-  if (!p) return;
+  if (!p || p.category === 'coming-soon' || isOutOfStock(p)) return;
   const cart = getCart();
   const ex = cart.find(i => i.id === productId);
   if (ex) ex.quantity += quantity;
